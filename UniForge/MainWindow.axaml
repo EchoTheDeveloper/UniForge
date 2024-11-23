@@ -1,0 +1,122 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="900"
+        x:Class="UniForge.MainWindow"
+        Title="UniForge"
+        Background="#1E1E1E">
+
+    <DockPanel>
+        <!-- Menu Bar at the top with a modern look -->
+        <Menu DockPanel.Dock="Top" Background="#252526" Foreground="#D4D4D4" BorderBrush="#333333" BorderThickness="0,0,0,1">
+            <MenuItem Header="File">
+                <MenuItem Header="New" />
+                <MenuItem Header="Open..." />
+                <MenuItem Header="Save" />
+                <MenuItem Header="Save As..." />
+                <Separator/>
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <Separator/>
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Options" />
+                <MenuItem Header="Extensions" />
+            </MenuItem>
+            <MenuItem Header="Build">
+                <MenuItem Header="Build Solution" />
+                <MenuItem Header="Run" />
+                <MenuItem Header="Debug" />
+            </MenuItem>
+            <MenuItem Header="Create">
+                <MenuItem Header="Create Harmony Patch" />
+                <MenuItem Header="Create Config Item" />
+                <MenuItem Header="Create Keybind" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Explorer" />
+                <MenuItem Header="Output" />
+                <MenuItem Header="Debug Console" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="View Help" />
+                <MenuItem Header="About" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Simple Toolbar using StackPanel -->
+        <Border DockPanel.Dock="Top" Background="#252526" BorderBrush="#333333" BorderThickness="0,0,0,1" Padding="5">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="🔄 Refresh" Background="#333333" Foreground="#D4D4D4" BorderBrush="#444444" Margin="5,0"/>
+                <Button Content="➕ New File" Background="#333333" Foreground="#D4D4D4" BorderBrush="#444444" Margin="5,0"/>
+                <Button Content="💾 Save" Background="#333333" Foreground="#D4D4D4" BorderBrush="#444444" Margin="5,0"/>
+                <Button Content="📶 VCS" Background="#333333" Foreground="#D4D4D4" BorderBrush="#444444" Margin="5,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area with Split View -->
+        <Grid>
+            <!-- Define columns: File Hierarchy on the left and the Code Editor on the right -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- File Hierarchy with a modern style -->
+            <Border Grid.Column="0" Background="#252526" Padding="10" BorderBrush="#333333" BorderThickness="0,0,1,0">
+                <StackPanel>
+                    <TextBlock Text="Hierarchy" FontSize="18" FontWeight="Bold" Foreground="#D4D4D4" Margin="0,0,0,10"/>
+                    <ListBox Background="#252526" Foreground="#D4D4D4" BorderThickness="0">
+                        <ListBoxItem Content="MainPatcher.cs" Padding="5" Margin="2" Background="#2D2D30" BorderBrush="#3C3C3C" />
+                        <ListBoxItem Content="ExampleModMain.cs" Padding="5" Margin="2" Background="#2D2D30" BorderBrush="#3C3C3C" />
+                        <ListBoxItem Content="ExampleModNPCJohnDoe.cs" Padding="5" Margin="2" Background="#2D2D30" BorderBrush="#3C3C3C" />
+                    </ListBox>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Background="#252526" Padding="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Line Numbers Panel -->
+                    <Border Background="#252526" Grid.Column="0" Padding="10,0" VerticalAlignment="Stretch">
+                        <TextBlock Text="1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11" 
+                                   Foreground="#858585" 
+                                   FontFamily="Consolas" 
+                                   FontSize="14" 
+                                   VerticalAlignment="Top"/>
+                    </Border>
+
+                    <!-- Code Editor Panel -->
+                    <ScrollViewer Grid.Column="1">
+                        <TextBox 
+                            FontFamily="Consolas"
+                            FontSize="14"
+                            Foreground="#D4D4D4"
+                            Background="#252526"
+                            TextWrapping="Wrap"
+                            AcceptsReturn="True"
+                            AcceptsTab="True"
+                            BorderThickness="0"
+                            Margin="10">
+                            
+                            <!-- Example content; replace with actual code -->
+                            Console.WriteLine("Hello World!"); // Welcome!
+                            
+                        </TextBox>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
